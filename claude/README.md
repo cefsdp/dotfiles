@@ -6,8 +6,50 @@ Protocole de travail et commandes communs à tous les projets de `~/code/cefsdp`
 bash claude/install.sh
 ```
 
-Idempotent, relançable. À rejouer sur une nouvelle machine, et après avoir amorcé un
-nouveau projet suivi.
+Idempotent, relançable. À rejouer après avoir amorcé un nouveau projet suivi.
+
+---
+
+## Sur une nouvelle machine
+
+```bash
+# 1. Claude Code, si absent
+npm install -g @anthropic-ai/claude-code && claude   # puis /login
+
+# 2. L'atelier et ce dépôt
+mkdir -p ~/code/cefsdp && cd ~/code/cefsdp
+git clone git@github.com:cefsdp/dotfiles.git
+
+# 3. Le protocole
+bash dotfiles/claude/install.sh
+
+# 4. Les projets suivis, dans l'atelier
+git clone git@github.com:cefsdp/loqos-ariane.git "LoqOS - Module Comptable"
+
+# 5. Relancer, pour lier les projets fraîchement clonés
+bash dotfiles/claude/install.sh
+```
+
+L'étape 5 n'est pas un doublon : le script ne lie que les dépôts déjà présents. Tout
+nouveau clone demande une relance.
+
+Si `dotfiles` ne vit pas dans l'atelier sur cette machine, passer le chemin en argument :
+
+```bash
+bash ~/dotfiles/claude/install.sh ~/code/cefsdp
+```
+
+### Ce qui ne se transporte pas
+
+| | Pourquoi | Quoi faire |
+| --- | --- | --- |
+| `.claude/settings.local.json` | Réglages de permission propres au poste, non versionnés | Se réaccorde à l'usage, à la première demande |
+| Mémoire automatique de Claude | `~/.claude/projects/<projet>/memory/`, jamais partagée entre machines | Rien — c'est précisément pourquoi le protocole écrit l'état dans git |
+| Autorisation des imports externes | Le `CLAUDE.md` de l'atelier importe un fichier situé hors du dossier de travail | Une boîte de dialogue s'affiche **une fois par projet**. Accepter |
+
+Cette dernière est normale et attendue : le protocole vit au-dessus des dépôts, donc
+l'import sort du dossier de travail vu depuis un projet. Refuser désactive le protocole
+pour ce projet, et la question n'est plus reposée.
 
 ---
 

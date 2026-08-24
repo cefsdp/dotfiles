@@ -47,8 +47,8 @@ Créer dans le dépôt du projet :
 .claude/projet/
 ├── ETAT.md                          60 lignes max, réécrit à chaque session
 ├── PROJET.md                        cahier des charges, contraintes, non-objectifs
-├── V1.md                            arbre phases / fonctionnalités / tâches
 ├── INBOX.md                         idées captées, pas encore rangées
+├── versions/V1.md                   arbre phases / fonctionnalités / tâches
 └── sessions/AAAA-MM-JJ-<prénom>.md
 ```
 
@@ -73,6 +73,14 @@ son `.claude/settings.local.json` :
   "claudeMdExcludes": ["/home/cefsdp/code/cefsdp/CLAUDE.md"]
 }
 ```
+
+---
+
+## Le guide d'origine
+
+`protocole-reference.md`, à côté de ce fichier, est le raisonnement complet qui a mené à ce
+montage. Il porte en tête la table des trois points sur lesquels la mise en œuvre a divergé,
+et pourquoi. `PROTOCOLE.md` est ce qui fait foi ; le guide sert à comprendre.
 
 ---
 

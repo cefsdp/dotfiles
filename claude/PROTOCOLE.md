@@ -22,12 +22,15 @@ Un projet suivi porte cette arborescence, **versionnée avec son code** :
 <projet>/.claude/projet/
 ├── ETAT.md                          état courant. 60 lignes max, réécrit à chaque session
 ├── PROJET.md                        cahier des charges, contraintes, non-objectifs, glossaire
-├── V<n>.md                          arbre phases / fonctionnalités / tâches
 ├── INBOX.md                         idées captées, pas encore rangées
+├── versions/V<n>.md                 arbre phases / fonctionnalités / tâches
 └── sessions/AAAA-MM-JJ-<prénom>.md  une entrée par session, jamais modifiée après coup
 ```
 
 Le `CLAUDE.md` du projet se termine par `@.claude/projet/ETAT.md`, seul import automatique.
+
+Les versions sont dans leur propre dossier : un projet finit par en compter plusieurs, et
+les laisser à plat noie `ETAT.md` et `PROJET.md` au milieu du backlog.
 
 `~/code/cefsdp/.claude/projets/<nom>` est un lien symbolique vers ce dossier : la vue est
 centralisée, les fichiers restent dans leur dépôt. Un clone du projet suffit à tout avoir.
@@ -39,7 +42,7 @@ centralisée, les fichiers restent dans leur dépôt. Un clone du projet suffit 
 1. `git pull --rebase`, puis `git status` et `git log --oneline -15`.
 2. Lis `.claude/projet/ETAT.md` en entier.
 3. Lis les 3 fichiers les plus récents de `.claude/projet/sessions/`.
-4. Lis `PROJET.md` et la version active ; relève les tâches `[~]`.
+4. Lis `PROJET.md` et la version active dans `versions/` ; relève les tâches `[~]`.
 5. Si des commits existent après le dernier SHA cité en session, lis leur diff
    (`git diff <sha>..HEAD --stat`) : quelqu'un a travaillé sans clôturer.
 6. Résume en 10 lignes max : où en est le projet, ce qui est en cours, ce qui est cassé,
@@ -71,7 +74,7 @@ centralisée, les fichiers restent dans leur dépôt. Un clone du projet suffit 
    ce qui a été fait avec les SHA et les IDs, **ce qui a été tenté puis abandonné et
    pourquoi** ← ne saute jamais ce point, ce qui reste cassé ou non testé, et la prochaine
    étape formulée comme une action exécutable telle quelle.
-2. Mets à jour les statuts dans le fichier de version.
+2. Mets à jour les statuts dans `versions/V<n>.md`.
 3. Réécris `ETAT.md`.
 4. Vérifie qu'aucune ligne `[~]` ne traîne sans être réellement en cours, et qu'aucun `[x]`
    n'est sans SHA.

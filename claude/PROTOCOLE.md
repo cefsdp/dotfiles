@@ -26,6 +26,7 @@ Un projet suivi porte cette arborescence, **versionnée avec son code** :
 ├── INBOX.md                         idées captées, pas encore rangées
 ├── versions/V<n>.md                 arbre phases / fonctionnalités / tâches
 └── sessions/AAAA-MM-JJ-<prénom>.md  une entrée par session, jamais modifiée après coup
+                                     (`-2`, `-3`… si l'on clôture deux fois le même jour)
 ```
 
 Deux régimes d'écriture, à ne pas mélanger — c'est ce qui décide où va une ligne.

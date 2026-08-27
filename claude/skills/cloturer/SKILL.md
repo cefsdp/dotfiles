@@ -5,7 +5,10 @@ description: Rituel de fin de session — écrit l'entrée de session, met à jo
 
 Exécute le protocole de fin de session.
 
-1. Crée `.claude/projet/sessions/AAAA-MM-JJ-<prénom>.md` :
+1. Crée `.claude/projet/sessions/AAAA-MM-JJ-<prénom>.md` — suffixe `-2`, `-3`… si le
+   fichier existe déjà, parce qu'on a repris le travail après une première clôture.
+   **Ne jamais compléter l'entrée précédente** : elle décrit une session close, et la
+   modifier après coup ferait mentir l'historique.
    - date, prénom, branche
    - objectif de la session
    - ce qui a été fait, avec les SHA et les IDs de tâches

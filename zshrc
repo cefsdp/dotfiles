@@ -53,6 +53,11 @@ load-nvmrc
 # Same for `./node_modules/.bin` and nodejs
 export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 
+# Binaires utilisateur : rtk, brain. Cette ligne existe dans ~/.profile et
+# ~/.bashrc, que zsh ne lit jamais — sans elle, le hook rtk de Claude Code
+# ne résout pas la commande et n'a filtré aucune sortie.
+export PATH="$HOME/.local/bin:$PATH"
+
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 

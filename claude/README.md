@@ -24,7 +24,7 @@ git clone git@github.com:cefsdp/dotfiles.git
 bash dotfiles/claude/install.sh
 
 # 4. Les projets suivis, dans l'atelier
-git clone git@github.com:cefsdp/loqos-ariane.git "LoqOS - Module Comptable"
+git clone git@github.com:HEX-Agency/loqos-ariane.git "LoqOS - Module Comptable"
 
 # 5. Relancer, pour lier les projets fraîchement clonés
 bash dotfiles/claude/install.sh

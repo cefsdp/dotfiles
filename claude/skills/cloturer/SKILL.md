@@ -13,9 +13,12 @@ Exécute le protocole de fin de session.
    - ce qui reste cassé ou non testé
    - la prochaine étape, formulée comme une action exécutable telle quelle
 2. Mets à jour les statuts dans le fichier de version.
-3. Réécris `.claude/projet/ETAT.md`.
-4. Vérifie la cohérence des statuts (voir ci-dessous).
-5. Montre les fichiers modifiés, **puis** commit et push.
+3. Verse les pièges rencontrés dans `.claude/projet/PIEGES.md`, et les décisions
+   durables dans l'ADR du projet ou `PROJET.md`. **Avant l'étape 4, pas après.**
+4. Réécris `.claude/projet/ETAT.md` **en entier**, sans repartir de la version
+   précédente.
+5. Vérifie la cohérence des statuts (voir ci-dessous).
+6. Montre les fichiers modifiés, **puis** commit et push.
 
 ## Rappels sur lesquels ne pas transiger
 
@@ -30,5 +33,10 @@ Exécute le protocole de fin de session.
   `git merge-base --is-ancestor <sha> HEAD`. Un SHA relevé avant un `--amend` pointe vers un
   commit orphelin, encore présent dans le reflog local mais absent de la branche.
 - Aucune ligne `[~]` qui traîne sans être réellement en cours.
-- `ETAT.md` reste sous 60 lignes. Ce qui est durable descend dans `PROJET.md` ou dans le
-  fichier de version.
+- `ETAT.md` reste sous 60 lignes, et **ne porte aucune section cumulative** : ni pièges,
+  ni journal de décisions. Un fichier réécrit à chaque session ne peut pas être aussi la
+  mémoire longue du projet — c'est toujours la mémoire longue qui gagne, et le fichier
+  finit par n'être plus lu. Compte les lignes avant de commiter : `wc -l`.
+- Avant d'écrire une ligne dans `ETAT.md`, vérifie qu'elle n'est pas déjà dans
+  `PROJET.md`, dans le fichier de version ou dans une ADR. La duplication ne se voit pas
+  à l'écriture et produit deux vérités qui divergent.

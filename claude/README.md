@@ -89,6 +89,7 @@ Créer dans le dépôt du projet :
 .claude/projet/
 ├── ETAT.md                          60 lignes max, réécrit à chaque session
 ├── PROJET.md                        cahier des charges, contraintes, non-objectifs
+├── PIEGES.md                        pièges rencontrés. Cumulatif, jamais élagué
 ├── INBOX.md                         idées captées, pas encore rangées
 ├── versions/V1.md                   arbre phases / fonctionnalités / tâches
 └── sessions/AAAA-MM-JJ-<prénom>.md

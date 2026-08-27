@@ -1,13 +1,14 @@
 # Protocole Claude Code multi-machines — synthèse et mise en œuvre
 
 > **Guide d'origine, conservé pour son raisonnement.** La mise en œuvre effective diverge
-> sur trois points, tranchés le 2026-08-24 en montant l'atelier. Le protocole qui fait foi
+> sur quatre points — trois tranchés le 2026-08-24 en montant l'atelier, un le 2026-08-27. Le protocole qui fait foi
 > est `PROTOCOLE.md`, à côté de ce fichier.
 >
 > | Le guide dit | Ce qui a été fait | Pourquoi |
 > | --- | --- | --- |
 > | `CLAUDE.md` par dépôt | Un seul, dans `~/code/cefsdp/`, plus un court par projet | Les `CLAUDE.md` remontent jusqu'à la racine du système : un seul suffit pour les seize dépôts |
 > | `.claude/commands/` par dépôt | Skills dans `dotfiles`, liés depuis `~/.claude/skills/` | La découverte des skills **s'arrête à la racine du dépôt** : un dossier commun au-dessus ne serait jamais lu |
+| `ETAT.md` porte « Décisions » et « Pièges » | Pièges dans `PIEGES.md`, décisions dans les ADR ou `PROJET.md` | Ces sections sont cumulatives, `ETAT.md` est réécrit à chaque session : le fichier atteignait 156 lignes pour 60 permises. C'est l'échec n° 4 de la section 8, arrivé exactement comme annoncé |
 > | `ETAT.md` et `sessions/` à la racine de `.claude/` | Tout sous `.claude/projet/` | Un seul dossier à lier vers la vue centralisée de l'atelier |
 >
 > Les versions vivent en outre dans `.claude/projet/versions/`, pour qu'un backlog à

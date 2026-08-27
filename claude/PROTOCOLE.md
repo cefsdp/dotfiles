@@ -22,10 +22,40 @@ Un projet suivi porte cette arborescence, **versionnée avec son code** :
 <projet>/.claude/projet/
 ├── ETAT.md                          état courant. 60 lignes max, réécrit à chaque session
 ├── PROJET.md                        cahier des charges, contraintes, non-objectifs, glossaire
+├── PIEGES.md                        pièges rencontrés. Cumulatif, on n'y retire jamais rien
 ├── INBOX.md                         idées captées, pas encore rangées
 ├── versions/V<n>.md                 arbre phases / fonctionnalités / tâches
 └── sessions/AAAA-MM-JJ-<prénom>.md  une entrée par session, jamais modifiée après coup
 ```
+
+Deux régimes d'écriture, à ne pas mélanger — c'est ce qui décide où va une ligne.
+
+| Régime | Fichiers | Ce qu'on y fait |
+| --- | --- | --- |
+| **Volatile** — remis à zéro | `ETAT.md` | Réécrit en entier à chaque clôture. Ne dit que : où on en est ce soir |
+| **Cumulatif** — jamais élagué | `PIEGES.md`, `sessions/` | On ajoute, on ne retire pas |
+| **Durable** — corrigé, pas empilé | `PROJET.md`, `versions/`, ADR du projet | Modifié quand la décision change, pas quand la session change |
+
+**`ETAT.md` ne porte aucune section cumulative.** Un fichier réécrit à chaque session ne
+peut pas être aussi la mémoire longue du projet : les deux rôles ont des rythmes
+contraires, et c'est toujours la mémoire longue qui gagne — le fichier grossit jusqu'à
+ce que plus personne ne le lise. D'où la limite de 60 lignes, qui n'est pas un caprice
+de format mais le seul garde-fou vérifiable.
+
+Chaque chose à sa place, dans l'ordre où on se pose la question :
+
+| Ce qu'on veut écrire | Où | Pourquoi pas dans `ETAT.md` |
+| --- | --- | --- |
+| Un piège, un contournement, un message d'erreur trompeur | `PIEGES.md` | Ne périme jamais. C'est ce qui rapporte le plus au collègue suivant |
+| Une décision coûteuse à défaire | ADR du projet, sinon `PROJET.md` | Le raisonnement d'origine vaut plus que la conclusion |
+| Une contrainte durable — version d'outil, convention, non-objectif | `PROJET.md` | Se corrige, ne s'empile pas |
+| Un arbitrage sur l'ordre ou le découpage du travail | `versions/V<n>.md` | Se lit là où il s'applique |
+| Ce qui a été tenté puis abandonné aujourd'hui | `sessions/` | Daté, jamais modifié après coup |
+| Où on en est, ce qui est cassé, la prochaine étape | `ETAT.md` | — |
+
+**Avant d'ajouter une ligne à `ETAT.md`, vérifie qu'elle n'existe pas déjà ailleurs.**
+La duplication est le mode de défaillance normal de ce fichier : elle ne se voit pas à
+l'écriture, et elle produit deux vérités qui divergent silencieusement.
 
 Le `CLAUDE.md` du projet se termine par `@.claude/projet/ETAT.md`, seul import automatique.
 
@@ -59,10 +89,11 @@ centralisée, les fichiers restent dans leur dépôt. Un clone du projet suffit 
 
 - Découpe le travail en petits pas ; fais valider chaque pas avant le suivant.
 - Commits atomiques, messages en français : `feat(V1-P1-F01): ...`
-- Dès qu'une décision d'architecture est prise ou qu'un piège est découvert, note-le
-  **immédiatement** dans `ETAT.md`. N'attends pas la fin.
-- Un piège consigné vaut mieux qu'un piège recontourné. La section « Pièges » est celle
-  qui rapporte le plus au collègue suivant.
+- Dès qu'un piège est découvert, écris-le **immédiatement** dans `PIEGES.md` ; dès
+  qu'une décision d'architecture est prise, dans l'ADR du projet ou `PROJET.md`.
+  N'attends pas la fin — c'est en le contournant qu'on sait pourquoi il piège.
+- Un piège consigné vaut mieux qu'un piège recontourné. `PIEGES.md` est le fichier qui
+  rapporte le plus au collègue suivant.
 
 ---
 
@@ -75,10 +106,14 @@ centralisée, les fichiers restent dans leur dépôt. Un clone du projet suffit 
    pourquoi** ← ne saute jamais ce point, ce qui reste cassé ou non testé, et la prochaine
    étape formulée comme une action exécutable telle quelle.
 2. Mets à jour les statuts dans `versions/V<n>.md`.
-3. Réécris `ETAT.md`.
-4. Vérifie qu'aucune ligne `[~]` ne traîne sans être réellement en cours, et qu'aucun `[x]`
+3. Verse dans `PIEGES.md` les pièges rencontrés, et dans l'ADR du projet ou `PROJET.md`
+   les décisions durables. **Avant de réécrire `ETAT.md`, pas après** : ce qui reste
+   après ce versement est exactement ce qui a sa place dans l'état courant.
+4. Réécris `ETAT.md` **en entier**, sans repartir de la version précédente. Si le
+   résultat dépasse 60 lignes, c'est qu'une ligne appartient à un autre fichier.
+5. Vérifie qu'aucune ligne `[~]` ne traîne sans être réellement en cours, et qu'aucun `[x]`
    n'est sans SHA.
-5. Commit + push.
+6. Commit + push.
 
 ---
 

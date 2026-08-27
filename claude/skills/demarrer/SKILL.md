@@ -6,7 +6,9 @@ description: Rituel de reprise de session — lit l'état du projet, les derniè
 Exécute le protocole de démarrage, dans cet ordre.
 
 1. `git pull --rebase`, puis `git status` et `git log --oneline -15`.
-2. Lis `.claude/projet/ETAT.md` en entier.
+2. Lis `.claude/projet/ETAT.md` en entier, puis `.claude/projet/PIEGES.md`. Le second
+   n'est pas importé automatiquement et ne périme pas : c'est lui qui évite de
+   recontourner un piège déjà payé.
 3. Lis les 3 fichiers les plus récents de `.claude/projet/sessions/`.
 4. Lis `.claude/projet/PROJET.md` et la version active ; relève les tâches `[~]`.
 5. Si des commits existent après le dernier SHA cité en session, lis leur diff
